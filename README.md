@@ -38,7 +38,7 @@ In order to use `covariatetimeseries`, you need a Python environment with Python
 You can install the package directly from Github using `pip`:
 
 ```bash
-pip install git+https://github.com/discovertomorrow/covariatetimeseries.git@v1.0
+pip install git+https://github.com/discovertomorrow/covariatetimeseries.git
 ```
 
 ## 📂 How to Use
