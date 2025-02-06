@@ -1,0 +1,7 @@
+{
+	"name": "covariate-time-series-python",
+	"build": {
+		"dockerfile": "Dockerfile",
+		"context": "..",
+		},
+}

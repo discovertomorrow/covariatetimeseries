@@ -1,0 +1,19 @@
+[project]
+name = "covariatetimeseries"
+version = "1.0"
+description = "A collection of time series with covariates/indicators to be ready-to-use for forecasting projects."
+readme = "README.md"
+authors = [
+    { name = "martin", email = "martin.wild@prognostica.de" },
+    { name = "julian", email = "julian.boehm@prognostica.de" },
+]
+
+requires-python = ">=3.9"
+dependencies = ["pandas==2.2.3"]
+
+[project.optional-dependencies]
+dependencies = ["uv"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
