@@ -1,7 +1,10 @@
 import pandas as pd
 
-DATASET_INFO_PATH='src/covariatetimeseries/data_collections/_collection_info.csv'
-DATASET_DIR_PATH="src/covariatetimeseries/data_collections"
+import importlib.resources
+
+DATASET_INFO_FILE = '_collection_info.csv'
+DATASET_MODULE = 'covariatetimeseries.data_collections'
+
 
 def load_timeseries(dataset_name, target_name, ts_name=None, other_targets_as_covs=True, exclude_time_covariates=False, verbose=False):
     """
@@ -19,11 +22,15 @@ def load_timeseries(dataset_name, target_name, ts_name=None, other_targets_as_co
         pandas.DataFrame: The loaded dataframe with the time series.
     """
 
-    table_df = pd.read_csv(DATASET_INFO_PATH, sep=';')
+    dataset_location = importlib.resources.files(DATASET_MODULE)
+    with importlib.resources.as_file(dataset_location) as dataset_dir:
+        table_df = pd.read_csv(dataset_dir / DATASET_INFO_FILE, sep=';')
 
     dataset_info = table_df[table_df["name"] == dataset_name].iloc[0]
 
-    file_path = f"{DATASET_DIR_PATH}/{dataset_name}.csv"
+
+    with importlib.resources.as_file(dataset_location) as dataset_dir:
+        file_path = dataset_dir / f"{dataset_name}.csv"
     try:
         df = pd.read_csv(file_path, sep=';')
 
